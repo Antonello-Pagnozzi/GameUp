@@ -28,5 +28,6 @@ public class DataLoader implements CommandLineRunner {
         Role userRole = roleRepository.save(new Role(RoleName.ROLE_USER));
 
         userService.createUser("admin","admin","admin@admin.it", Set.of(adminRole));
+        userService.createUser("user","user","user@user.it", Set.of(userRole));
     }
 }
