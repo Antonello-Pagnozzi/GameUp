@@ -1,4 +1,4 @@
-package com.jdk.GameUp.Security;
+package com.jdk.GameUp.Security.Repository;
 
 import com.jdk.GameUp.Security.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -13,6 +13,12 @@ public class Role {
     private Long id;
     private RoleName ruolo;
 
+    //Costruttori
+    public Role(){}
+
+    public Role(RoleName ruolo) {
+        this.ruolo = ruolo;
+    }
     //Getter e setter
     public Long getId() {
         return id;
