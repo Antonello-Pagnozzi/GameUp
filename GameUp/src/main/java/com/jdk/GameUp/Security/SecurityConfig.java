@@ -2,6 +2,7 @@ package com.jdk.GameUp.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -28,11 +29,13 @@ public class SecurityConfig {
                         // Rotte per ruoli specifici
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/giochi/**").hasAnyRole("USER", "ADMIN")
 
                         // Tutte le altre richieste possono essere pubbliche
                         .anyRequest().permitAll()
                 )
-
+                //abilita basic Auth
+                .httpBasic(Customizer.withDefaults())
                 // Login con form
                 .formLogin(form -> form
                         //.loginPage("/login") // opzionale, se hai template personalizzato

@@ -50,11 +50,23 @@ public class GameLoader implements CommandLineRunner {
         bg3Piatt.add(Piattaforma.PLAYSTATION_4);
         bg3Piatt.add(Piattaforma.XBOX_SERIES_X);
         bg3Piatt.add(Piattaforma.XBOX_SERIES_S);
-        Gioco baldursGate = new Gioco("Baldur''s Gate 3", 2023, "Larian Studios");
+        Gioco baldursGate = new Gioco("Baldur's Gate 3", 2023, "Larian Studios");
         baldursGate.setGenere(bg3Generi);
         baldursGate.setDlc(bg3DLC);
         baldursGate.setPiattaforme(bg3Piatt);
         giocoService.salvaGioco(baldursGate);
 
+        //crea gioco 3
+        Set<Genere> wowGeneri = new HashSet<>();
+        wowGeneri.add(Genere.GDR);
+        wowGeneri.add(Genere.MMO);
+        Set<DLC> wowDLC = new HashSet<>();
+        Set<Piattaforma>wowPiatt = new HashSet<>();
+        wowPiatt.add(Piattaforma.PC);
+        Gioco warcraft = new Gioco("World of Warcraft", 2004, "Blizzard Entertainment");
+        warcraft.setGenere(wowGeneri);
+        warcraft.setDlc(wowDLC);
+        warcraft.setPiattaforme(wowPiatt);
+        giocoService.salvaGioco(warcraft);
     }
 }

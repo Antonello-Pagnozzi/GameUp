@@ -32,7 +32,7 @@ public class GiocoController {
 
     @PostMapping("/salva")
     @PreAuthorize("hasRole('ADMIN')")
-    public Gioco salva(Gioco gioco){
+    public Gioco salva(@RequestBody Gioco gioco){
         return giocoService.salvaGioco(gioco);
     }
 
