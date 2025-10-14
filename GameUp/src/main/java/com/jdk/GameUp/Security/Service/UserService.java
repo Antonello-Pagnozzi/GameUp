@@ -1,6 +1,6 @@
 package com.jdk.GameUp.Security.Service;
 
-import com.jdk.GameUp.Entity.UserDTO;
+import com.jdk.GameUp.Security.Entity.UserDTO;
 import com.jdk.GameUp.Security.Entity.Role;
 import com.jdk.GameUp.Security.Entity.RoleName;
 import com.jdk.GameUp.Security.Entity.User;
@@ -9,7 +9,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;

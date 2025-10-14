@@ -1,4 +1,4 @@
-package com.jdk.GameUp.Entity;
+package com.jdk.GameUp.Security.Entity;
 
 public class UserDTO {
 

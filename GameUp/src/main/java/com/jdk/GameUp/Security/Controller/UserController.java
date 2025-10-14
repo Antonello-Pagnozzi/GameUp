@@ -1,6 +1,6 @@
-package com.jdk.GameUp.Controller;
+package com.jdk.GameUp.Security.Controller;
 
-import com.jdk.GameUp.Entity.UserDTO;
+import com.jdk.GameUp.Security.Entity.UserDTO;
 import com.jdk.GameUp.Security.Entity.User;
 import com.jdk.GameUp.Security.Service.UserService;
 import org.springframework.http.ResponseEntity;
