@@ -43,4 +43,8 @@ public class DLCService {
         dlcRepository.deleteById(id);
     }
 
+    public boolean esistePerId(Long id) {
+        return dlcRepository.existsById(id);
+    }
+
 }
