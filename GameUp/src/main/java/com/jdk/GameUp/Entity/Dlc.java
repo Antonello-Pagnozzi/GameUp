@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class DLC {
+public class Dlc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +20,14 @@ public class DLC {
 
 
     //costruttore parametrizzato
-    public DLC(String nomeDlc, Gioco giocoDiRiferimento, int annoUscita) {
+    public Dlc(String nomeDlc, Gioco giocoDiRiferimento, int annoUscita) {
         this.nomeDlc = nomeDlc;
         this.giocoDiRiferimento = giocoDiRiferimento;
         this.annoUscita = annoUscita;
     }
 
     //costruttore vuoto
-    public DLC(){}
+    public Dlc(){}
 
     //Getter e setter
     public Long getId() {

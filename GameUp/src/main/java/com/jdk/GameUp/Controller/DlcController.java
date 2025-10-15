@@ -1,7 +1,8 @@
 package com.jdk.GameUp.Controller;
 
-import com.jdk.GameUp.Entity.DLC;
-import com.jdk.GameUp.Service.DLCService;
+import com.jdk.GameUp.Entity.Dlc;
+import com.jdk.GameUp.Entity.DlcDto;
+import com.jdk.GameUp.Service.DlcService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -10,18 +11,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/DLC")
-public class DLCController {
+public class DlcController {
 
-    private DLCService dlcService;
+    private DlcService dlcService;
 
-    public DLCController(DLCService dlcService){
+    public DlcController(DlcService dlcService){
         this.dlcService = dlcService;
     }
 
     @GetMapping("/tutti")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<List<DLC>> trovaTutti(){
-        List<DLC> tutti = dlcService.trovaTutti();
+    public ResponseEntity<List<Dlc>> trovaTutti(){
+        List<Dlc> tutti = dlcService.trovaTutti();
         if (tutti.isEmpty()){
             return ResponseEntity.noContent().build();
         }
@@ -30,14 +31,14 @@ public class DLCController {
 
     @GetMapping("/trova/{id}")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<DLC> trovaPerId(@PathVariable Long id){
+    public ResponseEntity<Dlc> trovaPerId(@PathVariable Long id){
         return ResponseEntity.ok(dlcService.trovaPerID(id));
     }
 
-    @PostMapping("/salva")
+    @PostMapping("/salva/{giocoId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<DLC> salva(@RequestBody DLC dlc){
-        return ResponseEntity.ok(dlcService.salvaDLC(dlc));
+    public ResponseEntity<Dlc> salva(@RequestBody DlcDto dlc, @PathVariable Long giocoId){
+        return ResponseEntity.ok(dlcService.salvaDlc(dlc, giocoId));
     }
 
     @DeleteMapping("/cancella/{id}")

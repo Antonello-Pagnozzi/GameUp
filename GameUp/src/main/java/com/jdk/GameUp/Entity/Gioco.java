@@ -22,10 +22,10 @@ public class Gioco {
     @NotNull
     private Set<Piattaforma> piattaforme;
     @OneToMany(mappedBy = "giocoDiRiferimento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<DLC> dlc;
+    private Set<Dlc> dlc;
 
     //Costruttore parametrizzato
-    public Gioco(String nome, Set<Genere> genere, int annoUscita, String sviluppatore, Set<DLC> dlc,
+    public Gioco(String nome, Set<Genere> genere, int annoUscita, String sviluppatore, Set<Dlc> dlc,
                  Set<Piattaforma> piattaforme) {
         this.nome = nome;
         this.genere = genere;
@@ -94,11 +94,11 @@ public class Gioco {
         this.piattaforme = piattaforme;
     }
 
-    public Set<DLC> getDlc() {
+    public Set<Dlc> getDlc() {
         return dlc;
     }
 
-    public void setDlc(Set<DLC> dlc) {
+    public void setDlc(Set<Dlc> dlc) {
         this.dlc = dlc;
     }
 }
