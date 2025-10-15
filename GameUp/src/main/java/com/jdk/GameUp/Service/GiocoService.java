@@ -63,4 +63,9 @@ public class GiocoService {
     }
 
 
+
+    public boolean esistePerId(Long id) {
+        return giocoRepository.existsById(id);
+    }
+
 }

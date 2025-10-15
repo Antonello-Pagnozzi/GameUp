@@ -31,7 +31,7 @@ public class DLCController {
         return dlcService.salvaDLC(dlc);
     }
 
-    @PutMapping("/cancella/{id}")
+    @DeleteMapping("/cancella/{id}")
     public String cancella(@PathVariable long id){
         dlcService.cancellaDLCperId(id);
         return "DLC Cancellato correttamente!";
