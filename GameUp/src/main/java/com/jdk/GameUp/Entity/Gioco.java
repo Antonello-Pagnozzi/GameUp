@@ -1,5 +1,6 @@
 package com.jdk.GameUp.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -22,6 +23,7 @@ public class Gioco {
     @NotNull
     private Set<Piattaforma> piattaforme;
     @OneToMany(mappedBy = "giocoDiRiferimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Dlc> dlc;
 
     //Costruttore parametrizzato

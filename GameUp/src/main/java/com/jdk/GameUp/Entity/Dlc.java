@@ -1,5 +1,6 @@
 package com.jdk.GameUp.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,6 +15,7 @@ public class Dlc {
     @ManyToOne
     @JoinColumn(name = "gioco_id")
     @NotNull
+    @JsonBackReference
     private Gioco giocoDiRiferimento;
     @NotNull
     private int annoUscita;
