@@ -1,9 +1,7 @@
 package com.jdk.GameUp.Utility;
 
-import com.jdk.GameUp.Entity.Dlc;
-import com.jdk.GameUp.Entity.Genere;
-import com.jdk.GameUp.Entity.Gioco;
-import com.jdk.GameUp.Entity.Piattaforma;
+import com.jdk.GameUp.Entity.*;
+import com.jdk.GameUp.Service.DlcService;
 import com.jdk.GameUp.Service.GiocoService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,9 +13,11 @@ import java.util.Set;
 public class GameLoader implements CommandLineRunner {
 
     private GiocoService giocoService;
+    private DlcService dlcService;
 
-    public GameLoader(GiocoService giocoService){
+    public GameLoader(GiocoService giocoService, DlcService dlcService){
         this.giocoService = giocoService;
+        this.dlcService = dlcService;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class GameLoader implements CommandLineRunner {
         streetFighter.setGenere(strGeneri);
         streetFighter.setDlc(strDlc);
         streetFighter.setPiattaforme(strPiatt);
-        giocoService.salvaGioco(streetFighter);
+        giocoService.salvaGiocoRunner(streetFighter);
 
         //crea gioco 2
         Set<Genere> bg3Generi = new HashSet<>();
@@ -53,7 +53,7 @@ public class GameLoader implements CommandLineRunner {
         baldursGate.setGenere(bg3Generi);
         baldursGate.setDlc(bg3Dlc);
         baldursGate.setPiattaforme(bg3Piatt);
-        giocoService.salvaGioco(baldursGate);
+        giocoService.salvaGiocoRunner(baldursGate);
 
         //crea gioco 3
         Set<Genere> wowGeneri = new HashSet<>();
@@ -66,6 +66,12 @@ public class GameLoader implements CommandLineRunner {
         warcraft.setGenere(wowGeneri);
         warcraft.setDlc(wowDlc);
         warcraft.setPiattaforme(wowPiatt);
-        giocoService.salvaGioco(warcraft);
+        giocoService.salvaGiocoRunner(warcraft);
+
+        //crea dlc
+        DlcDto dlc = new DlcDto();
+        dlc.setNomeDlc("The Burning Crusade");
+        dlc.setAnnoUscita(2006);
+        dlcService.salvaDlc(dlc, 3L);
     }
 }

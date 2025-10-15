@@ -1,14 +1,14 @@
 package com.jdk.GameUp.Service;
 
+import com.jdk.GameUp.Entity.Dlc;
 import com.jdk.GameUp.Entity.Genere;
 import com.jdk.GameUp.Entity.Gioco;
+import com.jdk.GameUp.Entity.GiocoDto;
 import com.jdk.GameUp.Repository.GiocoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class GiocoService {
@@ -35,10 +35,21 @@ public class GiocoService {
         return risultato;
     }
 
-    public Gioco salvaGioco(Gioco gioco){
-        return giocoRepository.save(gioco);
+    public Gioco salvaGioco(GiocoDto gioco){
+        Gioco salva = new Gioco();
+        salva.setNome(gioco.getNome());
+        salva.setGenere(gioco.getGenere());
+        salva.setPiattaforme(gioco.getPiattaforme());
+        salva.setAnnoUscita(gioco.getAnnoUscita());
+        salva.setSviluppatore(gioco.getSviluppatore());
+        Set<Dlc> dlc = new HashSet<>();
+        salva.setDlc(dlc);
+        return giocoRepository.save(salva);
     }
 
+    public Gioco salvaGiocoRunner(Gioco gioco){
+        return giocoRepository.save(gioco);
+    }
     public Gioco trovaPerId(Long id){
         Optional<Gioco> trova = giocoRepository.findById(id);
         if (trova.isEmpty()){

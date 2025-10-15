@@ -2,6 +2,7 @@ package com.jdk.GameUp.Controller;
 
 import com.jdk.GameUp.Entity.Genere;
 import com.jdk.GameUp.Entity.Gioco;
+import com.jdk.GameUp.Entity.GiocoDto;
 import com.jdk.GameUp.Service.GiocoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -41,7 +42,7 @@ public class GiocoController {
 
     @PostMapping("/salva")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Gioco> salva(@RequestBody Gioco gioco){
+    public ResponseEntity<Gioco> salva(@RequestBody GiocoDto gioco){
         return ResponseEntity.ok(giocoService.salvaGioco(gioco));
     }
 
